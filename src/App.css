@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #373737;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+}
+
+.App-syndio-logo {
+  margin-left: 24px;
+}
+
+.App-group-picker {
+  background-color: #262626;
+  border: none;
   color: white;
+  height: 40px;
+  margin-left: auto;
+  margin-right: 24px;
+  padding-left: 10px;
+  text-align: left;
+  width: 200px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-group-picker img {
+  float: right;
+  margin-right: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-group-picker.active {
+  border: 1px solid #0D8B7F;
+}
+
+.drop-wrapper {
+  position: relative;
+}
+
+.drop-menu {
+  background-color: white;
+  position: absolute;
+  width: 200px;
+}
+
+.drop-menu span {
+  color: black;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
 }
