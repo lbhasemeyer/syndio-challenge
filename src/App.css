@@ -10,12 +10,13 @@
   margin-left: 24px;
 }
 
-.App-group-picker.active {
+.drop-wrapper.active {
   border: 1px solid #0D8B7F;
 }
 
 .drop-wrapper {
   margin-right: 24px;
+  width: 200px;
 }
 
 .drop-wrapper select {
@@ -23,11 +24,13 @@
   border: none;
   color: white;
   height: 40px;
+  outline: none;
   text-indent: 5px;
 }
 
 .drop-menu {
   background-color: white;
+  margin-right: 24px;
   width: 200px;
 }
 

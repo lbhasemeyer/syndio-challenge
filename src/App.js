@@ -9,7 +9,7 @@ function App() {
   const [groupByRole, setGroupByRole] = useState({});
   const [getDataError, setGetDataError] = useState('');
   const [dropdownGroup, setDropdownGroup] = useState('');
-  // const [dropdownFocused, setDropdownFocused] = useState(false);
+  const [dropdownFocused, setDropdownFocused] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -24,7 +24,6 @@ function App() {
         return response.json();
       }));
     }).then(function(data) {
-      console.log('data: ', data);
       data.forEach((apiRes, index) => {
         if(index === 0){
           //initially set dropdown group to first option
@@ -42,9 +41,9 @@ function App() {
 
   const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
   // laura, need to use this
-  // const dropdownButtonClass = (dropdownFocused ? 'App-group-picker active' : 'App-group-picker');
+  const dropdownButtonClass = (dropdownFocused ? 'drop-wrapper active' : 'drop-wrapper');
   const dropdown = (
-    <label className='drop-wrapper'>
+    <label className={dropdownButtonClass} onClick={() => setDropdownFocused(true)} onBlur={() => setDropdownFocused(false)}>
       <select className='drop-menu' value={dropdownGroup.label} id='dropdown' onChange={e => setDropdownGroup(e.target.value)}>
         <option value='Group by Function'>Group by Function</option>
         <option value='Group by Role'>Group by Role</option>
