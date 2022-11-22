@@ -12,7 +12,6 @@ function App() {
   const [dropdownGroup, setDropdownGroup] = useState('');
   const [dropdownFocused, setDropdownFocused] = useState(false);
 
-  // Get data
   useEffect(() => {
     Promise.all([
       fetch('https://run.mocky.io/v3/9e343425-c47c-4c7f-a1ac-972c099be0ed'),  // Get `Group Names & IDs` (for header dropdown):
@@ -26,7 +25,9 @@ function App() {
       data.forEach((apiRes, index) => {
         if(index === 0){
           setGroupByNamesIds(apiRes);
-          setDropdownGroup(apiRes[0].label);
+          console.log('**', apiRes[0])
+          //initially set dropdown group to first option
+          setDropdownGroup(apiRes[0]);
         } else if(index === 1){
           setGroupByFunction(apiRes);
         } else {
@@ -38,12 +39,12 @@ function App() {
     });
   }, []);
 
-  // WOULD BE BETTER TO CHECK ID OR NOT SET A CONST
-  const dataForPage = (dropdownGroup === 'Group by Function') ? groupByFunction : groupByRole;
+  // I don't like checking this against a string - would rather check id or at least check against a variable string agreed to be a stable identifier.
+  const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
   const dropdownButtonClass = (dropdownFocused ? 'App-group-picker active' : 'App-group-picker');
   const dropdown = (
     <label className='drop-wrapper'>
-      <select className='drop-menu' value={dropdownGroup} id='dropdown' onChange={e => setDropdownGroup(e.target.value)}>
+      <select className='drop-menu' value={dropdownGroup.label} id='dropdown' onChange={e => setDropdownGroup(e.target.value)}>
         <option value='Group by Function'>Group by Function</option>
         <option value='Group by Role'>Group by Role</option>
       </select>

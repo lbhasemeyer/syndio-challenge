@@ -8,14 +8,12 @@ function Home(props) {
 
     const errorDisplay = (props.error !== '') ? (<div data-testid="errorDisplay">Error: {props.error}</div>) : null;
 
-    // Need to bold the data points
     const loadedData = (selectedTab === 'Race') ? props?.pageData?.data?.race : props?.pageData?.data?.gender;
     const payEquityGapText = loadedData ? (`${loadedData.payEquityGap.data.minority.label} earn <strong>${loadedData.payEquityGap.data.minority.value}</strong> for every <strong>${loadedData.payEquityGap.data.majority.value}</strong> earned by comparable ${loadedData.payEquityGap.data.majority.label.toLowerCase()}`): '';
     const employeesComparison = loadedData ? (`${loadedData.employeeComparison.data.label} make up <strong>${loadedData.employeeComparison.data.value}</strong> of employees`): '';
     const budgetRequired = loadedData ? (`<strong>${loadedData.budget.data.value}</strong> minimum recommended budget to reduce pay equity gap`): '';
-
     const boxData = {'Pay Equity Gap': Parser(payEquityGapText), 'Employees in Comparison': Parser(employeesComparison), 'Budget': Parser(budgetRequired)};
-    const boxes: any[] = [];
+    const boxes = [];
     for(const [key, value] of Object.entries(boxData)){
         boxes.push(
             <div key={key} className={'Home-box'}>
@@ -25,7 +23,6 @@ function Home(props) {
         );
     }
 
-    // This could be better
     const genderClassName = (selectedTab === 'Gender') ? 'Home-tab active' : 'Home-tab';
     const raceClassName = (selectedTab === 'Race') ? 'Home-tab active' : 'Home-tab';
 
