@@ -25,7 +25,6 @@ function App() {
       data.forEach((apiRes, index) => {
         if(index === 0){
           setGroupByNamesIds(apiRes);
-          console.log('**', apiRes[0])
           //initially set dropdown group to first option
           setDropdownGroup(apiRes[0]);
         } else if(index === 1){
@@ -39,7 +38,6 @@ function App() {
     });
   }, []);
 
-  // I don't like checking this against a string - would rather check id or at least check against a variable string agreed to be a stable identifier.
   const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
   const dropdownButtonClass = (dropdownFocused ? 'App-group-picker active' : 'App-group-picker');
   const dropdown = (
@@ -58,10 +56,10 @@ function App() {
     </div>
 
   return (
-    <>
+    <React.Fragment>
       {header}
       <Home pageData={dataForPage} error={getDataError} />
-    </ >
+    </ React.Fragment>
   )
 }
 

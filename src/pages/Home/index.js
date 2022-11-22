@@ -16,9 +16,9 @@ function Home(props) {
     const boxes = [];
     for(const [key, value] of Object.entries(boxData)){
         boxes.push(
-            <div key={key} className={'Home-box'}>
+            <div key={key} className={'Home-box'} data-testid="dataBox">
                 <div className='Home-box-label'>{key.toUpperCase()}</div>
-                <div className='Home-box-data'>{value}</div>
+                <div className='Home-box-data' data-testid="dataBoxValue">{value}</div>
             </div>
         );
     }
@@ -29,9 +29,8 @@ function Home(props) {
     return (
         <div className='Home'>
             <div className='Home-tabs'>
-                {/* Can I populate these dynamically from the data? */}
                 <div className={genderClassName} onClick={() => setSelectedTab('Gender')}>Gender</div>
-                <div className={raceClassName} onClick={() => setSelectedTab('Race')}>Race</div>
+                <div className={raceClassName} data-testid="raceTab" onClick={() => setSelectedTab('Race')}>Race</div>
             </div>
             {errorDisplay}
             <div className='Home-boxes'>
