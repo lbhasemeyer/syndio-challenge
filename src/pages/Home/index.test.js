@@ -1,76 +1,15 @@
 import React from 'react';
+import { groupByFunctionData } from './constants.js';
 import Home from './index';
-// import { MemoryRouter } from 'react-router-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-const data = {
-    data: {
-        gender: {
-            budget: {
-                label: 'Budget',
-                data: {
-                    value: '$109,887'
-                }
-            },
-            employeeComparison: {
-                label: 'Employees in Comparison',
-                data: {
-                    label: 'Women',
-                    value: '13.5%'
-                }
-            },
-            payEquityGap: {
-                label: 'Pay Equity Gap',
-                data: {
-                    majority: {
-                        label: 'Men',
-                        value: '$1'
-                    },
-                    minority: {
-                        label: 'Women',
-                        value: '89¢'
-                    }
-                }
-            }
-        },
-        race: {
-            budget: {
-                label: 'Budget',
-                data: {
-                    value: '$345,001'
-                }
-            },
-            employeeComparison: {
-                label: 'Employees in Comparison',
-                data: {
-                    label: 'Hispanics',
-                    value: '30%'
-                }
-            },
-            payEquityGap: {
-                label: 'Pay Equity Gap',
-                data: {
-                    majority: {
-                        label: 'Whites',
-                        value: '$1'
-                    },
-                    minority: {
-                        label: 'Hispanics',
-                        value: '87¢'
-                    }
-                }
-            }
-        },
-        id: 'groupByFunction',
-        label: 'Group by Function'
-    }
-};
+const data = groupByFunctionData;
 const errorMsg = 'There was an issue getting data - please refresh the page to try again.';
 
 test('renders tdata by Gender on initial load when pageData is passed in props', async () => {
   render(<Home pageData={data} error={''} />);
-  const animalNames = await screen.findAllByTestId('dataBox');
-  expect(animalNames).toHaveLength(3);
+  const dataBoxes = await screen.findAllByTestId('dataBox');
+  expect(dataBoxes).toHaveLength(3);
   const boxValues = await screen.findAllByTestId('dataBoxValue');
   expect(boxValues[0].textContent).toBe('Women earn 89¢ for every $1 earned by comparable men');
   expect(boxValues[1].textContent).toBe('Women make up 13.5% of employees');

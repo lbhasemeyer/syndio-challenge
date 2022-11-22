@@ -5,26 +5,28 @@ import syndioLogo from './assets/syndioLogo.svg';
 import './App.css';
 
 function App() {
-  const [groupByNamesIds, setGroupByNamesIds] = useState([]);
   const [groupByFunction, setGroupByFunction] = useState({});
   const [groupByRole, setGroupByRole] = useState({});
   const [getDataError, setGetDataError] = useState('');
   const [dropdownGroup, setDropdownGroup] = useState('');
-  const [dropdownFocused, setDropdownFocused] = useState(false);
+  // const [dropdownFocused, setDropdownFocused] = useState(false);
 
   useEffect(() => {
     Promise.all([
-      fetch('https://run.mocky.io/v3/9e343425-c47c-4c7f-a1ac-972c099be0ed'),  // Get `Group Names & IDs` (for header dropdown):
-      fetch('https://run.mocky.io/v3/a9f6a4b7-d03c-4a45-b64b-791e054f36b8'),  // Get `Group by Function` (for page content):
-      fetch('https://run.mocky.io/v3/f1b01b57-3147-476a-a632-0c10ad2a3c1a'),  // Get `Group by Role` (for page content):
+      // Get `Group Names & IDs` (for header dropdown)
+      fetch('https://run.mocky.io/v3/9e343425-c47c-4c7f-a1ac-972c099be0ed'),
+      // Get `Group by Function` (for page content)
+      fetch('https://run.mocky.io/v3/a9f6a4b7-d03c-4a45-b64b-791e054f36b8'),
+      // Get `Group by Role` (for page content)
+      fetch('https://run.mocky.io/v3/f1b01b57-3147-476a-a632-0c10ad2a3c1a'),
     ]).then(function(responses) {
       return Promise.all(responses.map(function (response) {
         return response.json();
       }));
     }).then(function(data) {
+      console.log('data: ', data);
       data.forEach((apiRes, index) => {
         if(index === 0){
-          setGroupByNamesIds(apiRes);
           //initially set dropdown group to first option
           setDropdownGroup(apiRes[0]);
         } else if(index === 1){
@@ -39,7 +41,8 @@ function App() {
   }, []);
 
   const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
-  const dropdownButtonClass = (dropdownFocused ? 'App-group-picker active' : 'App-group-picker');
+  // laura, need to use this
+  // const dropdownButtonClass = (dropdownFocused ? 'App-group-picker active' : 'App-group-picker');
   const dropdown = (
     <label className='drop-wrapper'>
       <select className='drop-menu' value={dropdownGroup.label} id='dropdown' onChange={e => setDropdownGroup(e.target.value)}>
