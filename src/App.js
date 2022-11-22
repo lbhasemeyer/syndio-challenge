@@ -6,19 +6,18 @@ import './App.css';
 
 function App() {
   const [groupByNamesIds, setGroupByNamesIds] = useState([]);
-  const [groupByFunction, setGroupByFunction] = useState([]);
-  const [groupByRole, setGroupByRole] = useState('');
+  const [groupByFunction, setGroupByFunction] = useState({});
+  const [groupByRole, setGroupByRole] = useState({});
   const [getDataError, setGetDataError] = useState('');
   const [dropdownGroup, setDropdownGroup] = useState('');
   const [dropdownFocused, setDropdownFocused] = useState(false);
 
   // Get data
   useEffect(() => {
-    console.log('use effect')
     Promise.all([
-      fetch('https://run.mocky.io/v3/9e343425-c47c-4c7f-a1ac-972c099be0ed'),  // ○ Get `Group Names & IDs` (for header dropdown):
-      fetch('https://run.mocky.io/v3/a9f6a4b7-d03c-4a45-b64b-791e054f36b8'),  // ○ Get `Group by Function` (for page content):
-      fetch('https://run.mocky.io/v3/f1b01b57-3147-476a-a632-0c10ad2a3c1a'),  // ○ Get `Group by Role` (for page content):
+      fetch('https://run.mocky.io/v3/9e343425-c47c-4c7f-a1ac-972c099be0ed'),  // Get `Group Names & IDs` (for header dropdown):
+      fetch('https://run.mocky.io/v3/a9f6a4b7-d03c-4a45-b64b-791e054f36b8'),  // Get `Group by Function` (for page content):
+      fetch('https://run.mocky.io/v3/f1b01b57-3147-476a-a632-0c10ad2a3c1a'),  // Get `Group by Role` (for page content):
     ]).then(function(responses) {
       return Promise.all(responses.map(function (response) {
         return response.json();

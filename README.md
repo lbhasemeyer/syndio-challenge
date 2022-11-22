@@ -26,9 +26,9 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## If I had more time I would...
+* Write more tests
 * Have better git flow - write new code on branches, and merge those to master
 * Add a redux flow (if handling more data / pages / calls)
-* Consider breaking reusable things into a constants file
 * Use ul/li for the dropdown to better style the carrot and active state
 * I only set one breakpoint - I like how this flows at all screen widths
 * Less comparing against strings - use variables so less places to change if ever needed
