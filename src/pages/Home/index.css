@@ -17,7 +17,7 @@
     border-left: 1px solid #e7e7e7;
     border-right: 1px solid #e7e7e7;
     color: #666666;
-    cursor: pointer;
+    cursor: default;
     display: inline-block;
     line-height: 40px;
     text-align: center;
@@ -56,4 +56,22 @@
     color: #666666;
     font-size: 12px;
     margin-bottom: 24px;
+}
+
+@media only screen and (max-width: 535px) {
+    .Home-tab {
+        width: 100px;
+    }
+    
+    .Home-boxes {
+        flex-direction: column;
+    }
+
+    .Home-box:first-of-type {
+        margin-left: 12px;
+    }
+    
+    .Home-box:last-of-type {
+        margin-right: 12px;
+    }
 }

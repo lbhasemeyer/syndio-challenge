@@ -10,40 +10,29 @@
   margin-left: 24px;
 }
 
-.App-group-picker {
-  background-color: #262626;
-  border: none;
-  color: white;
-  height: 40px;
-  margin-left: auto;
-  margin-right: 24px;
-  padding-left: 10px;
-  text-align: left;
-  width: 200px;
-}
-
-.App-group-picker img {
-  float: right;
-  margin-right: 15px;
-}
-
 .App-group-picker.active {
   border: 1px solid #0D8B7F;
 }
 
 .drop-wrapper {
-  position: relative;
+  margin-right: 24px;
+}
+
+.drop-wrapper select {
+  background-color: #262626;
+  border: none;
+  color: white;
+  height: 40px;
+  text-indent: 5px;
 }
 
 .drop-menu {
   background-color: white;
-  position: absolute;
   width: 200px;
 }
 
 .drop-menu span {
   color: black;
-  cursor: pointer;
   display: block;
   text-decoration: none;
   padding: 10px;
