@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Parser from 'html-react-parser';
 import { PropTypes } from "prop-types";
 import './index.css';
@@ -23,8 +23,8 @@ function Home(props) {
         );
     }
 
-    const genderClassName = (selectedTab === 'Gender') ? 'Home-tab active' : 'Home-tab';
-    const raceClassName = (selectedTab === 'Race') ? 'Home-tab active' : 'Home-tab';
+    const genderClassName = (selectedTab === 'Gender') ? 'Home-tab gender active' : 'Home-tab gender';
+    const raceClassName = (selectedTab === 'Race') ? 'Home-tab race active' : 'Home-tab race';
 
     return (
         <div className='Home'>

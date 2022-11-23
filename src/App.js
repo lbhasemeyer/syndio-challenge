@@ -39,8 +39,14 @@ function App() {
     });
   }, []);
 
+
+// {id: 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8', label: 'Group by Function'}
+// {id: 'f1b01b57-3147-476a-a632-0c10ad2a3c1a', label: 'Group by Role'}
+// const search = useLocation().search;
+// const group = new URLSearchParams(search).get('group');
+// console.log(group);
+
   const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
-  // laura, need to use this
   const dropdownButtonClass = (dropdownFocused ? 'drop-wrapper active' : 'drop-wrapper');
   const dropdown = (
     <label className={dropdownButtonClass} onClick={() => setDropdownFocused(true)} onBlur={() => setDropdownFocused(false)}>
@@ -52,10 +58,10 @@ function App() {
   );
 
   const header =
-    <div className='App-header'>
+    (<div className='App-header'>
       <img className={'App-syndio-logo'} src={syndioLogo} height={30} alt='Syndio logo' />
       {dropdown}
-    </div>
+    </div>);
 
   return (
     <React.Fragment>
