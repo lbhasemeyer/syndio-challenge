@@ -22,6 +22,7 @@
 .drop-wrapper select {
   background-color: #262626;
   border: none;
+  border-right: 10px solid transparent;
   color: white;
   height: 40px;
   outline: none;
@@ -39,4 +40,18 @@
   display: block;
   text-decoration: none;
   padding: 10px;
+}
+
+.option {
+  background-color: white;
+  color: gray;
+}
+
+.option.selected {
+  color: black;
+}
+
+.option.disabled {
+  color: black;
+  font-size: 12px;
 }

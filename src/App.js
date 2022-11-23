@@ -8,7 +8,7 @@ function App() {
   const [groupByFunction, setGroupByFunction] = useState({});
   const [groupByRole, setGroupByRole] = useState({});
   const [getDataError, setGetDataError] = useState('');
-  const [dropdownGroup, setDropdownGroup] = useState('');
+  const [dropdownGroup, setDropdownGroup] = useState({});
   const [dropdownFocused, setDropdownFocused] = useState(false);
 
   useEffect(() => {
@@ -39,20 +39,24 @@ function App() {
     });
   }, []);
 
-
-// {id: 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8', label: 'Group by Function'}
-// {id: 'f1b01b57-3147-476a-a632-0c10ad2a3c1a', label: 'Group by Role'}
-// const search = useLocation().search;
-// const group = new URLSearchParams(search).get('group');
-// console.log(group);
+  function setDropdownGroupFromLabel(label) {
+    if(label === 'Group by Function'){
+      setDropdownGroup({id: 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8', label: 'Group by Function'})
+    } else {
+      setDropdownGroup({id: 'f1b01b57-3147-476a-a632-0c10ad2a3c1a', label: 'Group by Role'})
+    }
+  }
 
   const dataForPage = (dropdownGroup.id === 'a9f6a4b7-d03c-4a45-b64b-791e054f36b8') ? groupByFunction : groupByRole;
   const dropdownButtonClass = (dropdownFocused ? 'drop-wrapper active' : 'drop-wrapper');
+  const optionFunctionClass = (dropdownGroup === 'Group by Function') ? 'option selected': 'option';
+  const optionGroupClass = (dropdownGroup === 'Group by Role') ? 'option selected': 'option';
   const dropdown = (
     <label className={dropdownButtonClass} onClick={() => setDropdownFocused(true)} onBlur={() => setDropdownFocused(false)}>
-      <select className='drop-menu' value={dropdownGroup.label} id='dropdown' onChange={e => setDropdownGroup(e.target.value)}>
-        <option value='Group by Function'>Group by Function</option>
-        <option value='Group by Role'>Group by Role</option>
+      <select className='drop-menu' value={dropdownGroup.label} onChange={e => setDropdownGroupFromLabel(e.target.value)}>
+        <option className={'option disabled'} disabled>CHANGE GROUP</option>
+        <option className={optionFunctionClass} value='Group by Function'>Group by Function</option>
+        <option className={optionGroupClass} value='Group by Role'>Group by Role</option>
       </select>
     </label>
   );
